@@ -29,41 +29,41 @@ var APP_ID = "amzn1.ask.skill.982aee1d-1d57-4133-a301-e351a961a601"; //replace w
 var AlexaSkill = require('./AlexaSkill');
 
 /**
- * HelloWorld is a child of AlexaSkill.
+ * Portfolio is a child of AlexaSkill.
  * To read more about inheritance in JavaScript, see the link below.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
-var HelloWorld = function () {
+var Portfolio = function () {
     AlexaSkill.call(this, APP_ID);
 };
 
 // Extend AlexaSkill
-HelloWorld.prototype = Object.create(AlexaSkill.prototype);
-HelloWorld.prototype.constructor = HelloWorld;
+Portfolio.prototype = Object.create(AlexaSkill.prototype);
+Portfolio.prototype.constructor = Portfolio;
 
-HelloWorld.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
-    // console.log("HelloWorld onSessionStarted requestId: " + sessionStartedRequest.requestId
+Portfolio.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
+    // console.log("Portfolio onSessionStarted requestId: " + sessionStartedRequest.requestId
     //     + ", sessionId: " + session.sessionId);
     // any initialization logic goes here
 };
 
-HelloWorld.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    console.log("HelloWorld onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-    var speechOutput = "Welcome to the Alexa Portfolio Manager.";
-    var repromptText = "You can say 'Portfolio analysis for today', 'Securities information'";
+Portfolio.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
+    console.log("Portfolio onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
+    var speechOutput = "Welcome to the Alexa Portfolio Manager. What can I do for you today?";
+    var repromptText = "You can say 'Portfolio analysis for today' or 'Securities information'";
     response.ask(speechOutput, repromptText);
 };
 
-HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
-    console.log("HelloWorld onSessionEnded requestId: " + sessionEndedRequest.requestId
-        + ", sessionId: " + session.sessionId);
-    // any cleanup logic goes here
+Portfolio.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
+    // console.log("Portfolio onSessionEnded requestId: " + sessionEndedRequest.requestId
+    //     + ", sessionId: " + session.sessionId);
+    // // any cleanup logic goes here
 };
 
-HelloWorld.prototype.intentHandlers = {
+Portfolio.prototype.intentHandlers = {
     // register custom intent handlers
-    "HelloWorldIntent": function (intent, session, response) {
+    "PortfolioIntent": function (intent, session, response) {
         response.tellWithCard("Hello World!", "Hello World", "Hello World!");
     },
     DemoIntent: function (intent, session, response) {
@@ -77,8 +77,8 @@ HelloWorld.prototype.intentHandlers = {
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
-    // Create an instance of the HelloWorld skill.
-    var helloWorld = new HelloWorld();
-    helloWorld.execute(event, context);
+    // Create an instance of the Portfolio skill.
+    var portfolio = new Portfolio();
+    portfolio.execute(event, context);
 };
 
