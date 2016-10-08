@@ -43,8 +43,8 @@ HelloWorld.prototype = Object.create(AlexaSkill.prototype);
 HelloWorld.prototype.constructor = HelloWorld;
 
 HelloWorld.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
-    console.log("HelloWorld onSessionStarted requestId: " + sessionStartedRequest.requestId
-        + ", sessionId: " + session.sessionId);
+    // console.log("HelloWorld onSessionStarted requestId: " + sessionStartedRequest.requestId
+    //     + ", sessionId: " + session.sessionId);
     // any initialization logic goes here
 };
 
@@ -65,6 +65,10 @@ HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
     "HelloWorldIntent": function (intent, session, response) {
         response.tellWithCard("Hello World!", "Hello World", "Hello World!");
+    },
+    DemoIntent: function (intent, session, response) {
+        var IntentHandler = require("./intents/DemoIntent");
+        IntentHandler.execute(intent, session, response);
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.ask("You can say hello to me!", "You can say hello to me!");
