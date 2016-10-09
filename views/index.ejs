@@ -10,18 +10,18 @@
 </head>
 <body>
 	<div class="container">
-	
-	<center>		
 
-		<div id="myDiv" style="width: 800px"><!-- Plotly chart will be drawn inside this DIV --></div>
+		<center>		
 
-	</center>
+			<div id="myDiv" style="width: 800px"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+		</center>
 	</div>
 </body>
 <script>
-var dataset = [];
+	var dataset = [];
 	var socket = io.connect('/');
-	Plotly.newPlot('myDiv', dataset);
+	Plotly.plot('myDiv', dataset);
 	socket.emit("private message", function(data){
 		console.log(data);
 	})
@@ -39,21 +39,18 @@ var dataset = [];
 			type: 'scatter'
 		};
 		
-
 		dataset = [trace1]; 
 		
 		Plotly.animate('myDiv', {
-			data:[{y:y}],
+			data: [{y: y}],
 			traces: [0],
-			layout:{}
-
-		},{
-			transition:{
+			layout: {}
+		}, {
+			transition: {
 				duration: 500,
 				ease: 'cubic-in-out'
 			}
-		}
-		);
+		})
 
 		socket.emit('my other event', { my: 'data2' });
 
