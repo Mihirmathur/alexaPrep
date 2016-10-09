@@ -11,11 +11,11 @@
 <body>
 	<div class="container">
 	
-		
+	<center>		
 
 		<div id="myDiv" style="width: 800px"><!-- Plotly chart will be drawn inside this DIV --></div>
 
-	
+	</center>
 	</div>
 </body>
 <script>
@@ -25,7 +25,6 @@
 		console.log(data);
 	})
 	socket.on('news', function (data) {
-		
 		console.log(data);
 		var x = [],y = [];
 		for(var i=0; i<32; i++){
@@ -40,7 +39,7 @@
 		};
 		var dataset = [trace1]; 
 		Plotly.newPlot('myDiv', dataset);
-
+		Plotly.animate();
 
 		socket.emit('my other event', { my: 'data2' });
 
