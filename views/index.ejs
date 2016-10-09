@@ -27,7 +27,7 @@
 	socket.on('news', function (data) {
 		
 		console.log(data);
-		var x,y;
+		var x = [],y = [];
 		for(var i=0; i<32; i++){
 			x[i]=i;
 			y[i]=Number(data[i]);
