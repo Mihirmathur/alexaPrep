@@ -43,13 +43,13 @@ app.post('/display', function(req, res){
 })
 
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
+  //socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data) {
     console.log(data);
   });
   socket.on('private message', function (from, msg) {
     console.log('I received a private message by ', from, ' saying ', msg);
-    io.emit('news', { hello:  process.env.PORT});
+    //io.emit('news', { hello:  process.env.PORT});
   });
 
   socket.on('disconnect', function () {
