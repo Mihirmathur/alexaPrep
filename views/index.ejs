@@ -46,22 +46,18 @@
 		dataset = [trace1]; 
 		
 		Plotly.animate('myDiv', {
-			data: [
-					{x:x,
-					y: y}
-				],
-				layout: {
-					{
-						xaxis: {range: [Math.min.apply(Math, x), Math.max.apply(Math, x)]},
-						yaxis: {range: [Math.min.apply(Math, y), Math.max.apply(Math, y)]}
-					}
-				}
-			}, {
-				transition: {
-					duration: 500,
-					ease: 'cubic-in-out'
-				}
-			})
+			data: [{x:x,y: y}],
+			layout: {
+				xaxis: {range: [Math.min.apply(Math, x), Math.max.apply(Math, x)]},
+				yaxis: {range: [Math.min.apply(Math, y), Math.max.apply(Math, y)]}
+			}
+		}, 
+		{
+			transition: {
+				duration: 500,
+				ease: 'cubic-in-out'
+			}
+		});
 
 		socket.emit('my other event', { my: 'data2' });
 
