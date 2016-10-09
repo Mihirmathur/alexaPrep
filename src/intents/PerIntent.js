@@ -27,23 +27,27 @@ module.exports = {
   //           //process the JSON data etc
   //       }
   //   });
-
+  var s = '/'+ (intent.slots.company.value).toString();
+  var stock = ('/tools/hackathon/performance?endDate=20160915&identifiers=AAPL&includeReturnsMap=false&startDate=20160915&useCache=true').toString();
   var get_options = { 
-  	host:  'www.blackrock.com', 
+  	host:  'immense-basin-63840.herokuapp.com', 
   	port: '443', 
-  	path: '/tools/hackathon/performance?endDate=20160915&identifiers=AAPL&includeReturnsMap=false&startDate=20160915&useCache=true', 
+  	path: s,
   	method: 'GET' 
   };
   var get_req = https.request(get_options, function(res) { 
   	res.setEncoding('utf8'); 
-  	console.log(res);
+  	//console.log(res);
+  	console.log(stock);
   	var returnData = ""; 
   	res.on('data', function (chunk) { 
   		returnData += chunk; 
   	}); 
   	res.on('end', function () {
-  
-  		response.tellWithCard(JSON.parse(returnData).bmsRequestTime, "Hi", "How");
+  		var one_day = JSON.parse(returnData).oneDayChange;
+  		console.log(one_day);
+  		var text =  intent.slots.company.value + " is " + one_day +  " per cent up today.";
+  		response.ask(text, "What else can I do?");
   	}); 
    });
 

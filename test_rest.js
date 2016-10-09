@@ -1,10 +1,11 @@
 var https = require('https');
-var get_options = { 
-            host:  'www.blackrock.com', 
-            port: '443', 
-            path: '/tools/hackathon/performance?endDate=20160915&identifiers=AAPL&includeReturnsMap=false&startDate=20160915&useCache=true', 
-            method: 'GET' 
-        };
+var stock = 'aapl';
+  var get_options = { 
+    host:  'www.blackrock.com', 
+    port: '443', 
+    path: '/tools/hackathon/performance?endDate=20160915&identifiers='+stock.toString().toUpperCase()+'&includeReturnsMap=false&startDate=20160915&useCache=true', 
+    method: 'GET' 
+  };
 var get_req = https.request(get_options, function(res) { 
             res.setEncoding('utf8'); 
             console.log(res);
@@ -14,7 +15,8 @@ var get_req = https.request(get_options, function(res) { 
             }); 
             res.on('end', function () {
                 console.log("hello");
-                console.log(JSON.parse(returnData).resultMap.RETURNS.performanceChart);
+                console.log(JSON.parse(returnData).resultMap.RETURNS);
+                console.log(JSON.parse(returnData).resultMap.RETURNS[0].latestPerf.oneDay*100);
             }); 
          });
 

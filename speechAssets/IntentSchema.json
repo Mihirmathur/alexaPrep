@@ -13,7 +13,13 @@
       "intent": "DemoIntent"
     },
     {
-    	"intent": "PerIntent"
+    	"intent": "PerIntent",
+    	"slots": [
+        {
+          "name": "company",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
     }
   ]
 }

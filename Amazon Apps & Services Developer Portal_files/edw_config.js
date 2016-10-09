@@ -1,0 +1,1 @@
+var EDW_CONFIG = {"isRawTextSlotEnabled":false,"isInternationalizationEnabled":true,"isPermissionsEnabled":false,"contentSkillEnabled":true};
