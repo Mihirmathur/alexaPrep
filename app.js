@@ -33,6 +33,7 @@ io.on('connection', function (socket) {
   });
   socket.on('private message', function (from, msg) {
     console.log('I received a private message by ', from, ' saying ', msg);
+    socket.emit('news', { hello: 'gotya!!' });
   });
 
   socket.on('disconnect', function () {
