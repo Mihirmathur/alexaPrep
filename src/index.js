@@ -87,6 +87,10 @@ Portfolio.prototype.intentHandlers = {
     "InvestIntent": function(intent, session, response){
         var IntentHandler = require("./intents/InvestIntent");
         IntentHandler.execute(intent, session, response);
+    },
+    "DisplayIntent": function(intent, session, response){
+        var IntentHandler = require("./intents/DisplayIntent");
+        IntentHandler.execute(intent, session, response);
     }
 };
 

@@ -9,4 +9,7 @@ StockIntent what have I invested in
 InvestIntent I invested {amount} dollars in {apple|company} on {dateOfInvest}
 InvestIntent Add to portfolio {amount} dollars invested in {apple|company} on {dateOfInvest}
 
+DisplayIntent display {apple|company}
+DisplayIntent chart {apple|company}
+
 DemoIntent demo

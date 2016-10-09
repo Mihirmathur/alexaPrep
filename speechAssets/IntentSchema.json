@@ -16,6 +16,15 @@
       "intent": "DemoIntent"
     },
     {
+      "intent": "DisplayIntent",
+      "slots": [
+        {
+          "name": "company",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
     	"intent": "PerIntent",
     	"slots": [
         {
