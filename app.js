@@ -38,6 +38,8 @@ socket2.on('connect', function(socket) {
 app.post('/display', function(req, res){
   var t = req.body.data;
   io.emit('news', { hello:  t});
+  
+  res.end();
 })
 
 io.on('connection', function (socket) {
