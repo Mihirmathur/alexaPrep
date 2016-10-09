@@ -4,25 +4,52 @@
 	<title><%= title %></title>
 	<link rel='stylesheet' href='/stylesheets/style.css' />
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	
 </head>
 <body>
-	<h1><%= title %></h1>
-	<p id="hel">Welcome to <%= title %></p>
+	<div class="container">
+		<!-- <input id = "artist" type="text" placeholder="Artist"></input><br>
+		<input id = "song" type="text" placeholder="Songname"></input><br>
+		<button id = "submit" type="button" class="btn btn-primary">Primary</button> -->
+		<center><h1><%= title %></h1></center>
+		
+		<br>
+		<div id="myDiv" style="width: 400px"><!-- Plotly chart will be drawn inside this DIV --></div>
+		<br>
+		<pre><p style="text-align: center;"><%= lyrics %></p></pre>
+	</div>
 </body>
 <script>
-		var socket = io.connect('/');
-		socket.emit("private message", function(data){
-			console.log(data);
-		})
-		socket.on('news', function (data) {
-		
-			console.log(data);
-			socket.emit('my other event', { my: 'data2' });
 
-		});
-		socket.on('foo', function(msg) {
-			console.info(msg);
-		});
-	</script>
+	var socket = io.connect('/');
+	socket.emit("private message", function(data){
+		console.log(data);
+	})
+	socket.on('news', function (data) {
+		
+		console.log(data);
+		var x,y;
+		for(var i=0; i<32; i++){
+			x[i]=i;
+			y[i]=Number(data[i]);
+		}
+
+		var trace1 = {
+			x: x,
+			y: y,
+			type: 'scatter'
+		};
+		var dataset = [trace1]; 
+		Plotly.newPlot('myDiv', dataset);
+
+
+		socket.emit('my other event', { my: 'data2' });
+
+	});
+	socket.on('foo', function(msg) {
+		console.info(msg);
+	});
+</script>
 </html>
