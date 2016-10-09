@@ -21,11 +21,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+
+var io2 = require('socket.io-client');
+var socket2 = io2.connect('https://immense-basin-63840.herokuapp.com/', {reconnect: true});
+
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);  //pass a http.Server instance
 server.listen(process.env.PORT || 3000, function(){
   console.log('Listening on port 3000');
 });  //listen on port 3000
+
+socket2.on('connect', function(socket) { 
+  console.log('Connected!');
+});
+
+app.post('/display', function(req, res){
+  io.emit('news', { hello:  "Hurray!!"});
+})
+
 io.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data) {
