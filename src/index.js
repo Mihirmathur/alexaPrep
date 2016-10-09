@@ -70,6 +70,14 @@ Portfolio.prototype.intentHandlers = {
         var IntentHandler = require("./intents/DemoIntent");
         IntentHandler.execute(intent, session, response);
     },
+    // PerformanceIntent: function (intent, session, response) {
+    //     var IntentHandler = require("./intents/PerformanceIntent");
+    //     IntentHandler.execute(intent, session, response);
+    // },
+    PerIntent: function(intent, session, response){
+        var IntentHandler = require("./intents/PerIntent");
+        IntentHandler.execute(intent, session, response);
+    },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.ask("You can say hello to me!", "You can say hello to me!");
     }

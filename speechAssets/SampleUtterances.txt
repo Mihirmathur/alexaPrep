@@ -7,3 +7,9 @@ PortfolioIntent hi
 PortfolioIntent how are you
 
 DemoIntent demo
+
+PerformanceIntent portfolio
+
+PerIntent test
+PerIntent How's {company} doing today?
+PerIntent What is the trend for {company}?

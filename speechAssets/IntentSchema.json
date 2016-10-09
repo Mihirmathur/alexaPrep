@@ -1,13 +1,19 @@
 {
   "intents": [
+  	{
+  		"intent": "PortfolioIntent"
+  	},
     {
-      "intent": "PortfolioIntent"
+      "intent": "PerformanceIntent",
     },
     {
       "intent": "AMAZON.HelpIntent"
     },
     {
       "intent": "DemoIntent"
+    },
+    {
+    	"intent": "PerIntent"
     }
   ]
 }
