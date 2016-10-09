@@ -19,8 +19,9 @@
 	</div>
 </body>
 <script>
-
+var dataset = [];
 	var socket = io.connect('/');
+	Plotly.newPlot('myDiv', dataset);
 	socket.emit("private message", function(data){
 		console.log(data);
 	})
@@ -37,9 +38,22 @@
 			y: y,
 			type: 'scatter'
 		};
-		var dataset = [trace1]; 
-		Plotly.newPlot('myDiv', dataset);
-		Plotly.animate();
+		
+
+		dataset = [trace1]; 
+		
+		Plotly.animate('myDiv', {
+			data:[{y:y}],
+			traces: [0],
+			layout:{}
+
+		},{
+			transition:{
+				duration: 500,
+				ease: 'cubic-in-out'
+			}
+		}
+		);
 
 		socket.emit('my other event', { my: 'data2' });
 
