@@ -1,15 +1,12 @@
-PortfolioIntent say hello
-PortfolioIntent say hello world
-PortfolioIntent hello
-PortfolioIntent say hi
-PortfolioIntent say hi world
-PortfolioIntent hi
-PortfolioIntent how are you
+PerIntent {apple|company}
+PerIntent how is {apple|company} doing today
+PerIntent what is the trend for {apple|company}
+PerIntent what is the gain for {apple|company}
+
+StockIntent list my stocks
+StockIntent what have I invested in
+
+InvestIntent I invested {amount} dollars in {apple|company} on {dateOfInvest}
+InvestIntent Add to portfolio {amount} dollars invested in {apple|company} on {dateOfInvest}
 
 DemoIntent demo
-
-PerformanceIntent portfolio
-
-PerIntent test
-PerIntent How's {company} doing today?
-PerIntent What is the trend for {company}?

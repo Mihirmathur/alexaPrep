@@ -80,6 +80,13 @@ Portfolio.prototype.intentHandlers = {
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.ask("You can say hello to me!", "You can say hello to me!");
+    },
+    "StockIntent": function (intent, session, response) {
+        response.ask("You have currently invested in Apple, Google, Blackrock.", "I suggest you invest more.");
+    },
+    "InvestIntent": function(intent, session, response){
+        var IntentHandler = require("./intents/InvestIntent");
+        IntentHandler.execute(intent, session, response);
     }
 };
 

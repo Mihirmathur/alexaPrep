@@ -10,10 +10,39 @@
       "intent": "AMAZON.HelpIntent"
     },
     {
+      "intent": "StockIntent"
+    },
+    {
       "intent": "DemoIntent"
     },
     {
     	"intent": "PerIntent",
+    	"slots": [
+        {
+          "name": "company",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    },
+    {
+    	"intent": "InvestIntent",
+    	"slots": [
+        {
+          "name": "company",
+          "type": "AMAZON.LITERAL"
+        },
+        {
+        	"name": "dateOfInvest",
+        	"type": "AMAZON.DATE"
+        },
+        {
+        	"name": "amount",
+        	"type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
+    	"intent": "DateIntent",
     	"slots": [
         {
           "name": "company",

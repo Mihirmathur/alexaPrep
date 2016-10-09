@@ -44,9 +44,11 @@ module.exports = {
   		returnData += chunk; 
   	}); 
   	res.on('end', function () {
-  		var one_day = JSON.parse(returnData).oneDayChange;
+  		var d = JSON.parse(returnData);
+  		var one_day = d.oneDayChange;
+  		var lifetime = d.sinceStartDateChange;
   		console.log(one_day);
-  		var text =  intent.slots.company.value + " is " + one_day +  " per cent up today.";
+  		var text =  intent.slots.company.value + " is " + one_day +  " per cent up since yesterday. It is up by " + lifetime + " per cent since you bought it.";
   		response.ask(text, "What else can I do?");
   	}); 
    });
