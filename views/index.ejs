@@ -46,8 +46,10 @@
 		dataset = [trace1]; 
 		
 		Plotly.animate('myDiv', {
-			data: [{y: y}],
-			traces: [0],
+			data: [
+			{x:x,
+				y: y}
+				],
 			layout: {}
 		}, {
 			transition: {
