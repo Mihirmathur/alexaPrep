@@ -36,7 +36,8 @@ socket2.on('connect', function(socket) {
 });
 
 app.post('/display', function(req, res){
-  io.emit('news', { hello:  "Hurray!!"});
+  var t = req.body.data;
+  io.emit('news', { hello:  t});
 })
 
 io.on('connection', function (socket) {
